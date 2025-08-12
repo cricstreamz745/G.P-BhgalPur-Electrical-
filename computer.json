@@ -1,0 +1,20 @@
+[
+  {
+    "id": "cs101-1",
+    "title": "Introduction to Computer Science",
+    "date": "2023-09-05",
+    "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
+    "subject": "Computer Science",
+    "Faculty": "Dr. Smith"
+  },
+  {
+    "id": "math201-3",
+    "title": "Linear Algebra Basics",
+    "date": "2023-09-12",
+    "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
+    "subject": "Computer Science",
+    "Faculty": "Prof. Johnson"
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "fac001",
+    "name": "Dr. Sarah Johnson",
+    "image": "https://i.ibb.co/W4xdrKg6/Picsart-25-08-13-09-45-43-575.png",
+    "subjects": ["Craft"],
+    "classTime": "Mon, Wed, Fri - 10:00 AM to 12:00 PM",
+    "mobile": "+91 9876543210",
+    "email": "sarah.johnson@example.com",
+    "qualification": "PhD in Fine Arts, MFA in Craft Design",
+    "experience": "12 years"
+  },
+  {
+    "id": "fac002",
+    "name": "Prof. Michael Chen",
+    "image": "https://i.ibb.co/W4xdrKg6/Picsart-25-08-13-09-45-43-575.png",
+    "subjects": ["Metal Craft"],
+    "classTime": "Tue, Thu - 2:00 PM to 4:00 PM",
+    "mobile": "+91 8765432109",
+    "email": "michael.chen@example.com",
+    "qualification": "Masters in Industrial Design",
+    "experience": "8 years"
+  },
+  {
+    "id": "fac003",
+    "name": "Ms. Priya Sharma",
+    "image": "https://i.ibb.co/W4xdrKg6/Picsart-25-08-13-09-45-43-575.png",
+    "subjects": ["Embroidery"],
+    "classTime": "Mon, Wed - 3:00 PM to 5:00 PM",
+    "mobile": "+91 7654321098",
+    "email": "priya.sharma@example.com",
+    "qualification": "MA in Textile Design",
+    "experience": "6 years"
+  },
+  {
+    "id": "fac004",
+    "name": "Mr. David Wilson",
+    "image": "https://i.ibb.co/W4xdrKg6/Picsart-25-08-13-09-45-43-575.png",
+    "subjects": ["Ceramics"],
+    "classTime": "Tue, Fri - 11:00 AM to 1:00 PM",
+    "mobile": "+91 6543210987",
+    "email": "david.wilson@example.com",
+    "qualification": "BFA in Ceramic Arts",
+    "experience": "10 years"
+  },
+  {
+    "id": "fac005",
+    "name": "Dr. Ananya Patel",
+    "image": "https://i.ibb.co/W4xdrKg6/Picsart-25-08-13-09-45-43-575.png",
+    "subjects": ["Paper Craft"],
+    "classTime": "Thu, Sat - 9:00 AM to 11:00 AM",
+    "mobile": "+91 9432109876",
+    "email": "ananya.patel@example.com",
+    "qualification": "PhD in Folk Arts",
+    "experience": "15 years"
+  }
+]

@@ -2,109 +2,92 @@
   {
     "id": "math101-1",
     "title": "Introduction to Algebra",
+    "date": "2023-09-0he",
+    "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg"
+  },
+  {
+    "id": "math101-1",
+    "title": "Introduction to Algebra",
     "date": "2023-09-05",
     "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
-    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
-    "subject": "Mathematics",
-    "Faculty": "Prof. Johnson"
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg"
   },
   {
     "id": "math102-2",
     "title": "Calculus Fundamentals",
     "date": "2023-09-12",
     "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
-    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
-    "subject": "Mathematics",
-    "Faculty": "Dr. Williams"
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg"
   },
   {
     "id": "math103-3",
     "title": "Geometry Basics",
     "date": "2023-09-19",
     "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
-    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
-    "subject": "Mathematics",
-    "Faculty": "Prof. Brown"
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg"
   },
   {
     "id": "math104-4",
     "title": "Trigonometry Concepts",
     "date": "2023-09-26",
     "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
-    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
-    "subject": "Mathematics",
-    "Faculty": "Dr. Davis"
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg"
   },
   {
     "id": "math105-5",
     "title": "Probability Theory",
     "date": "2023-10-03",
     "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
-    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
-    "subject": "Mathematics",
-    "Faculty": "Prof. Miller"
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg"
   },
   {
     "id": "math106-6",
     "title": "Linear Algebra",
     "date": "2023-10-10",
     "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
-    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
-    "subject": "Mathematics",
-    "Faculty": "Dr. Wilson"
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg"
   },
   {
     "id": "math107-7",
     "title": "Differential Equations",
     "date": "2023-10-17",
     "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
-    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
-    "subject": "Mathematics",
-    "Faculty": "Prof. Moore"
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg"
   },
   {
     "id": "math108-8",
     "title": "Number Theory",
     "date": "2023-10-24",
     "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
-    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
-    "subject": "Mathematics",
-    "Faculty": "Dr. Taylor"
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg"
   },
   {
     "id": "math109-9",
     "title": "Discrete Mathematics",
     "date": "2023-10-31",
     "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
-    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
-    "subject": "Mathematics",
-    "Faculty": "Prof. Anderson"
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg"
   },
   {
     "id": "math179-9",
     "title": "Discrete Mathematics",
     "date": "2023-10-31",
     "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
-    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
-    "subject": "Mathematics",
-    "Faculty": "Prof. Anderson"
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg"
   },
   {
     "id": "math110-10",
     "title": "Statistics Fundamentals",
     "date": "2023-11-07",
     "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
-    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
-    "subject": "Mathematics",
-    "Faculty": "Dr. Thomas"
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg"
   },
   {
     "id": "math110-11",
     "title": "Fundamentals",
     "date": "2025-08-13",
     "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
-    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
-    "subject": "Mathematics",
-    "Faculty": "Dr. Thomas"
+    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg"
   }
 ]

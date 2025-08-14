@@ -6,7 +6,7 @@
     "subjects": ["Basic Engineering Mathematics"],
     "classTime": "Thu 01:00–02:00 PM, Fri 01:00–02:00 PM, Sat 12:00–01:00 PM (Tutorial)",
     "mobile": "+91 9876543210",
-    "email": "deep.prabha@example.com",
+    "email": "deep.prabha@gmail.com",
     "qualification": "M.Sc. in Mathematics, B.Ed.",
     "experience": "12 years"
   },
@@ -17,7 +17,7 @@
     "subjects": ["Applied Physics – B"],
     "classTime": "Mon 04:00–05:00 PM, Tue 02:00–03:00 PM",
     "mobile": "+91 8765432109",
-    "email": "sk.chaudhary@example.com",
+    "email": "sk.chaudhary@gmail.com",
     "qualification": "M.Sc. in Physics, NET Qualified",
     "experience": "10 years"
   },
@@ -28,7 +28,7 @@
     "subjects": ["Basic Electrical Engineering"],
     "classTime": "Tue 11:00–12:00 PM, Tue 12:00–01:00 PM (Lab), Wed 12:00–01:00 PM, Wed 03:00–04:00 PM (Lab), Sat 10:00–11:00 AM, Sat 11:00–12:00 PM (Lab)",
     "mobile": "+91 7654321098",
-    "email": "monika.tulasiyan@example.com",
+    "email": "monika.tulasiyan@gmail.com",
     "qualification": "Ph.D. in Electrical Engineering, M.Tech in Power Systems",
     "experience": "15 years"
   },
@@ -39,7 +39,7 @@
     "subjects": ["Fundamentals of IT & C Programming"],
     "classTime": "Mon 10:00–11:00 AM, Tue 10:00–11:00 AM, Wed 10:00–11:00 AM, Thu 10:00–12:00 PM (Lab), Fri 02:00–04:00 PM (Lab)",
     "mobile": "+91 6543210987",
-    "email": "chintamani.mandal@example.com",
+    "email": "chintamani.mandal@gmail.com",
     "qualification": "M.Tech in Computer Science, B.Tech in IT",
     "experience": "9 years"
   },
@@ -50,7 +50,7 @@
     "subjects": ["Engineering Drawing & Graphics"],
     "classTime": "Mon 02:00–03:00 PM (Lab), Wed 11:00–01:00 PM (Lab), Fri 10:00–12:00 PM (Lab)",
     "mobile": "+91 9432109876",
-    "email": "nitish.raj.an@example.com",
+    "email": "nitish.raj.an@gmail.com",
     "qualification": "M.Tech in Mechanical Design, Diploma in CAD",
     "experience": "11 years"
   },
@@ -61,7 +61,7 @@
     "subjects": ["Electrical & Electronics Workshop"],
     "classTime": "Mon 11:00–12:00 PM, Thu 03:00–04:00 PM",
     "mobile": "+91 9876543210",
-    "email": "amit.kumar@example.com",
+    "email": "amit.kumar@gmail.com",
     "qualification": "Diploma in Electrical Engineering, B.Tech in Electrical",
     "experience": "10 years"
   },
@@ -72,7 +72,7 @@
     "subjects": ["Open Educational Resources"],
     "classTime": "Mon 12:00–01:00 PM",
     "mobile": "+91 8765432109",
-    "email": "murari.kumar@example.com",
+    "email": "murari.kumar@gmail.com",
     "qualification": "M.A. in Education, PG Diploma in Educational Technology",
     "experience": "13 years"
   },
@@ -83,7 +83,7 @@
     "subjects": ["Sports, Yoga and Meditation"],
     "classTime": "Sat 01:00–02:00 PM",
     "mobile": "+91 7654321098",
-    "email": "arun.kumar@example.com",
+    "email": "arun.kumar@gmail.com",
     "qualification": "M.P.Ed. (Master of Physical Education), Diploma in Yoga",
     "experience": "15 years"
   }

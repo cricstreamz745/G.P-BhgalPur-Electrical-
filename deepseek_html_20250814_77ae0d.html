@@ -1,0 +1,1846 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>BGP BHGALPUR</title>  
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<style>  
+    * { 
+        margin: 0; 
+        padding: 0; 
+        box-sizing: border-box; 
+        font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+    }  
+    
+    body { 
+        background-color: #0f0f0f; 
+        color: #fff; 
+        background-image: radial-gradient(circle at 25% 25%, rgba(0, 120, 212, 0.15) 0%, transparent 50%),
+                          radial-gradient(circle at 75% 75%, rgba(0, 162, 255, 0.15) 0%, transparent 50%);
+    }  
+    
+    header {  
+        position: fixed; 
+        top: 0; 
+        width: 100%; 
+        padding: 5px 15px;  
+        background: rgba(0, 0, 0, 0.7); 
+        backdrop-filter: blur(15px);
+        display: flex; 
+        justify-content: center; 
+        align-items: center;  
+        z-index: 1000; 
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);  
+        box-shadow: 0 2px 20px rgba(0,0,0,0.5);  
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        background-image: radial-gradient(circle at 25% 25%, rgba(0, 120, 212, 0.1) 0%, transparent 50%),
+                          radial-gradient(circle at 75% 75%, rgba(0, 162, 255, 0.1) 0%, transparent 50%);
+    }  
+    
+    header img {   
+        height: 60px; 
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s ease;  
+        filter: drop-shadow(0 2px 8px rgba(0, 120, 212, 0.5));  
+    }  
+    
+    header.scrolled {  
+        background: rgba(0, 0, 0, 0.8); 
+        backdrop-filter: blur(15px);  
+        justify-content: flex-start; 
+        padding-left: 25px;   
+        box-shadow: 0 8px 40px rgba(0,0,0,0.7);  
+        height: 70px;
+    }  
+
+    /* Continuous Scroll Animation */
+    .fade-in-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .container { 
+        max-width: 1400px; 
+        margin: 100px auto 50px; 
+        padding: 0 30px; 
+    }  
+    
+    .section-title {   
+        font-size: 28px; 
+        margin-bottom: 25px; 
+        padding-left: 5px;   
+        font-weight: 600; 
+        position: relative; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between;  
+        text-shadow: 0 2px 10px rgba(0, 120, 212, 0.3);
+    }  
+    
+    .section-title .title-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .section-title::after {  
+        content: ''; 
+        position: absolute; 
+        bottom: -8px; 
+        left: 10px;  
+        width: 60px; 
+        height: 3px; 
+        background: linear-gradient(90deg, #0078d4, #00a2ff);  
+        border-radius: 3px;  
+        box-shadow: 0 2px 8px rgba(0, 120, 212, 0.5);
+    }  
+    
+    .section-title .material-icons {  
+        font-size: 28px;
+        background: linear-gradient(135deg, #0078d4, #00a2ff);  
+        -webkit-background-clip: text;  
+        -webkit-text-fill-color: transparent;  
+        filter: drop-shadow(0 2px 4px rgba(0, 120, 212, 0.5));
+    }  
+
+    .small-view-all {  
+        background: rgba(255,255,255,0.05);  
+        color: rgba(255,255,255,0.95); 
+        border: 1px solid rgba(255,255,255,0.15);  
+        border-radius: 12px;  
+        font-size: 13px; 
+        padding: 8px 16px; 
+        display: flex;  
+        align-items: center; 
+        gap: 6px; 
+        cursor: pointer;  
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);   
+        font-weight: 500;  
+        backdrop-filter: blur(8px);  
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transform: translateY(0);
+        will-change: transform;
+    }  
+    
+    .small-view-all:hover {  
+        background: rgba(255,255,255,0.15);  
+        border-color: rgba(255,255,255,0.3);  
+        box-shadow: 0 8px 20px rgba(0, 120, 212, 0.3);  
+        transform: translateY(-3px);  
+    }  
+    
+    .small-view-all:active {
+        transform: translateY(1px);
+    }
+    
+    .small-view-all .material-icons {  
+        font-size: 16px;  
+        color: #00a2ff;  
+        text-shadow: 0 0 8px rgba(0, 162, 255, 0.5);
+        transition: transform 0.3s ease;
+    }  
+    
+    .small-view-all:hover .material-icons {
+        transform: rotate(15deg);
+    }
+
+    .cards-container {  
+        display: flex; 
+        overflow-x: auto; 
+        gap: 25px; 
+        padding: 25px 10px; 
+        scrollbar-width: none;  
+        scroll-behavior: smooth;
+        margin: -25px -10px;
+    }  
+    
+    .cards-container::-webkit-scrollbar { display: none; }  
+
+    .card {  
+        min-width: 260px; 
+        width: 260px; 
+        border-radius: 16px; 
+        overflow: hidden;  
+        background: #1a1a1a; 
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);  
+        flex-shrink: 0; 
+        cursor: pointer; 
+        position: relative;  
+        border: 1px solid rgba(255,255,255,0.1);  
+        box-shadow: 0 12px 30px rgba(0,0,0,0.4);  
+        transform-style: preserve-3d;
+        perspective: 1000px;
+        will-change: transform, box-shadow;
+    }  
+    
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(0, 120, 212, 0.1) 0%, transparent 50%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 1;
+    }
+    
+    .card:hover {   
+        transform: translateY(-10px) scale(1.03);   
+        box-shadow: 0 25px 50px rgba(0,0,0,0.6);   
+        border-color: rgba(255,255,255,0.2);  
+    }  
+    
+    .card:hover::before {
+        opacity: 1;
+    }
+    
+    .card-image {   
+        width: 100%; 
+        height: 260px; 
+        object-fit: cover;   
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);  
+        position: relative;
+        z-index: 0;
+    }  
+    
+    .card:hover .card-image {  
+        transform: scale(1.1);  
+    }  
+    
+    .card-content { 
+        padding: 15px; 
+        position: relative;
+        z-index: 2;
+        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+    }  
+    
+    .card-title {  
+        font-size: 17px; 
+        margin-bottom: 12px; 
+        white-space: nowrap;  
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+        font-weight: 600;  
+        color: rgba(255,255,255,0.98);  
+    }  
+    
+    .card-details {   
+        font-size: 13px; 
+        color: rgba(255,255,255,0.7); 
+        margin-bottom: 8px;   
+        display: flex; 
+        align-items: center; 
+        gap: 8px;  
+    }  
+    
+    .card-faculty {   
+        font-size: 14px; 
+        color: rgba(255,255,255,0.85); 
+        margin-top: 15px;   
+        font-style: italic; 
+        display: flex; 
+        align-items: center;  
+        gap: 8px;  
+    }  
+    
+    .card-link {  
+        display: inline-block; 
+        margin-top: 20px; 
+        padding: 10px 18px;  
+        background: linear-gradient(135deg, #0078d4, #00a2ff); 
+        color: white;   
+        border-radius: 10px; 
+        font-size: 14px; 
+        font-weight: 600;  
+        text-decoration: none; 
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);   
+        border: none; 
+        width: 100%; 
+        text-align: center;  
+        box-shadow: 0 6px 20px rgba(0, 120, 212, 0.4);  
+        position: relative;
+        overflow: hidden;
+        will-change: transform, box-shadow;
+    }  
+    
+    .card-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: 0.5s;
+    }
+    
+    .card-link:hover {   
+        background: linear-gradient(135deg, #006cbe, #0078d4);   
+        box-shadow: 0 10px 30px rgba(0, 120, 212, 0.6);  
+        transform: translateY(-3px);  
+    }  
+    
+    .card-link:hover::before {
+        left: 100%;
+    }
+    
+    .card-link:active {
+        transform: translateY(1px);
+    }
+    
+    .card-link .material-icons {  
+        vertical-align: middle;  
+        margin-right: 8px;  
+        font-size: 18px;  
+    }  
+
+    .loading {   
+        text-align: center; 
+        padding: 60px; 
+        font-size: 18px; 
+        color: rgba(255,255,255,0.7);  
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 20px;  
+    }  
+    
+    .loading .material-icons {   
+        font-size: 36px;   
+        color: #00a2ff;  
+        text-shadow: 0 0 15px rgba(0, 162, 255, 0.5);
+        animation: spin 1.5s linear infinite, pulse 2s infinite alternate;  
+    }  
+    
+    @keyframes spin {  
+        0% { transform: rotate(0deg); }  
+        100% { transform: rotate(360deg); }  
+    }
+    
+    @keyframes pulse {
+        0% { opacity: 0.7; transform: scale(0.95); }
+        100% { opacity: 1; transform: scale(1.05); }
+    }  
+
+    /* Faculty Card Styles */
+    .faculty-card {
+        min-width: 160px;
+        width: 160px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        flex-shrink: 0;
+        padding: 15px;
+        border-radius: 16px;
+        background: rgba(26, 26, 26, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .faculty-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        background: rgba(26, 26, 26, 0.9);
+    }
+
+    .faculty-image {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #0078d4;
+        margin-bottom: 10px;
+        box-shadow: 0 4px 15px rgba(0, 120, 212, 0.3);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faculty-card:hover .faculty-image {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 120, 212, 0.5);
+    }
+
+    .faculty-name {
+        font-weight: 600;
+        color: #fff;
+        margin-top: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Faculty Modal Styles */
+    .faculty-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.9);
+        z-index: 3000;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .faculty-modal.show {
+        opacity: 1;
+    }
+
+    .faculty-modal-content {
+        background: #1a1a1a;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 600px;
+        padding: 30px;
+        position: relative;
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .faculty-modal-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .faculty-modal-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .faculty-modal-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #00a2ff;
+    }
+
+    .faculty-details {
+        width: 100%;
+        text-align: center;
+    }
+
+    .faculty-details h2 {
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+    .faculty-details p {
+        margin: 10px 0;
+        color: rgba(255,255,255,0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .faculty-details .material-icons {
+        color: #00a2ff;
+    }
+
+    /* Modal for All Notes */  
+    .modal {  
+        display: none; 
+        position: fixed; 
+        top: 0; 
+        left: 0;  
+        width: 100%; 
+        height: 100%; 
+        background: rgba(0,0,0,0.97);  
+        justify-content: center; 
+        align-items: center; 
+        z-index: 2000;  
+        backdrop-filter: blur(15px);  
+        opacity: 0;  
+        transition: opacity 0.4s ease;  
+    }  
+    
+    .modal.show {  
+        opacity: 1;  
+    }  
+    
+    .modal-content {  
+        background: #1a1a1a; 
+        padding: 40px; 
+        border-radius: 20px;  
+        width: 92%; 
+        max-width: 1400px; 
+        max-height: 90vh;   
+        overflow-y: auto; 
+        position: relative;  
+        border: 1px solid rgba(255,255,255,0.15);  
+        box-shadow: 0 30px 70px rgba(0,0,0,0.8);  
+        transform: translateY(30px);  
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);  
+        background-image: radial-gradient(circle at 75% 25%, rgba(0, 120, 212, 0.1) 0%, transparent 50%);
+        will-change: transform;
+    }  
+    
+    .modal.show .modal-content {  
+        transform: translateY(0);  
+    }  
+    
+    .modal-close {  
+        position: absolute; 
+        top: 20px; 
+        right: 20px;  
+        background: rgba(51,51,51,0.7); 
+        border: none; 
+        color: white;   
+        width: 40px; 
+        height: 40px; 
+        border-radius: 50%;  
+        cursor: pointer; 
+        font-size: 18px; 
+        display: flex;  
+        justify-content: center; 
+        align-items: center;  
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);  
+        backdrop-filter: blur(8px);  
+        border: 1px solid rgba(255,255,255,0.15);  
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        will-change: transform;
+    }  
+    
+    .modal-close:hover {  
+        background: #ff3b30; 
+        transform: rotate(90deg);  
+        box-shadow: 0 6px 20px rgba(255, 59, 48, 0.4);
+    }  
+    
+    .modal-header {  
+        margin-bottom: 30px; 
+        padding-right: 40px;  
+    }  
+    
+    .modal-header h2 {  
+        font-size: 32px; 
+        margin-bottom: 12px;  
+        background: linear-gradient(135deg, #0078d4, #00a2ff);  
+        -webkit-background-clip: text; 
+        -webkit-text-fill-color: transparent;  
+        display: flex;  
+        align-items: center;  
+        gap: 12px;  
+        text-shadow: 0 2px 15px rgba(0, 120, 212, 0.4);
+    }  
+    
+    .modal-header h2 .material-icons {  
+        font-size: 32px;  
+    }  
+    
+    .modal-header p {  
+        color: rgba(255,255,255,0.7); 
+        font-size: 15px;  
+        padding-left: 45px;  
+    }  
+    
+    .modal-grid {  
+        display: grid; 
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));   
+        gap: 25px; 
+        padding: 15px 0;  
+    }  
+    
+    .modal-card {  
+        background: #252525; 
+        border-radius: 16px; 
+        overflow: hidden;  
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);   
+        border: 1px solid rgba(255,255,255,0.1);  
+        box-shadow: 0 12px 30px rgba(0,0,0,0.4);  
+        position: relative;
+        will-change: transform, box-shadow;
+    }  
+    
+    .modal-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(0, 120, 212, 0.1) 0%, transparent 50%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 1;
+    }
+    
+    .modal-card:hover {  
+        transform: translateY(-10px) scale(1.03);   
+        box-shadow: 0 25px 50px rgba(0,0,0,0.6);  
+        border-color: rgba(255,255,255,0.2);  
+    }  
+    
+    .modal-card:hover::before {
+        opacity: 1;
+    }
+    
+    .modal-card-image {  
+        width: 100%; 
+        height: 240px; 
+        object-fit: cover;  
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);  
+        position: relative;
+        z-index: 0;
+    }  
+    
+    .modal-card:hover .modal-card-image {  
+        transform: scale(1.1);  
+    }  
+    
+    .modal-card-content { 
+        padding: 15px; 
+        position: relative;
+        z-index: 2;
+        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+    }  
+    
+    .modal-card-title {  
+        font-size: 16px; 
+        margin-bottom: 12px; 
+        font-weight: 600;  
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis;  
+        color: rgba(255,255,255,0.98);  
+    }  
+    
+    .modal-card-details {  
+        font-size: 13px; 
+        color: rgba(255,255,255,0.7); 
+        margin-bottom: 12px;  
+        display: flex; 
+        align-items: center; 
+        gap: 8px;  
+    }  
+    
+    .modal-card-link {  
+        display: block; 
+        padding: 10px 15px;   
+        background: linear-gradient(135deg, #0078d4, #00a2ff);  
+        color: white; 
+        text-align: center; 
+        border-radius: 10px;  
+        font-size: 14px; 
+        text-decoration: none;   
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);  
+        box-shadow: 0 6px 20px rgba(0, 120, 212, 0.4);  
+        position: relative;
+        overflow: hidden;
+        will-change: transform, box-shadow;
+    }  
+    
+    .modal-card-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: 0.5s;
+    }
+    
+    .modal-card-link:hover {   
+        background: linear-gradient(135deg, #006cbe, #0078d4);  
+        box-shadow: 0 10px 30px rgba(0, 120, 212, 0.6);  
+        transform: translateY(-3px);  
+    }  
+    
+    .modal-card-link:hover::before {
+        left: 100%;
+    }
+    
+    .modal-card-link:active {
+        transform: translateY(1px);
+    }
+    
+    .modal-card-link .material-icons {  
+        vertical-align: middle;  
+        margin-right: 8px;  
+        font-size: 18px;  
+    }  
+
+    .search-container {  
+        margin-bottom: 30px; 
+        position: relative;  
+    }  
+    
+    .search-input {  
+        width: 100%; 
+        padding: 16px 25px; 
+        padding-left: 55px;  
+        background: rgba(37, 37, 37, 0.7); 
+        border: 1px solid rgba(255,255,255,0.15);  
+        border-radius: 12px; 
+        color: white; 
+        font-size: 15px;  
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);  
+        backdrop-filter: blur(8px);  
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);  
+    }  
+    
+    .search-input:focus {  
+        outline: none; 
+        border-color: #0078d4;  
+        box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.4), 
+                    0 10px 30px rgba(0,0,0,0.5);  
+    }  
+    
+    .search-icon {  
+        position: absolute; 
+        left: 20px; 
+        top: 50%;  
+        transform: translateY(-50%); 
+        color: #00a2ff;  
+        font-size: 22px;  
+        text-shadow: 0 0 10px rgba(0, 162, 255, 0.5);
+    }  
+
+    .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 120, 212, 0.9);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+        box-shadow: 0 5px 20px rgba(0, 120, 212, 0.5);
+        border: 1px solid rgba(255,255,255,0.2);
+        will-change: transform, opacity;
+    }
+    
+    .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .scroll-to-top:hover {
+        background: #0078d4;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 120, 212, 0.7);
+    }
+    
+    .scroll-to-top:active {
+        transform: translateY(-3px);
+    }
+
+    .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+        overflow: hidden;
+    }
+    
+    .particle {
+        position: absolute;
+        background: rgba(0, 162, 255, 0.3);
+        border-radius: 50%;
+        pointer-events: none;
+        animation: float 15s linear infinite;
+        opacity: 0;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translate(0, 0);
+            opacity: 0;
+        }
+        10% {
+            opacity: 0.8;
+        }
+        90% {
+            opacity: 0.8;
+        }
+        100% {
+            transform: translate(var(--tx, 100px), var(--ty, 100px));
+            opacity: 0;
+        }
+    }
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: rgba(0,0,0,0.8);
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 12px;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .glow {
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes glow {
+        from {
+            box-shadow: 0 0 5px rgba(0, 120, 212, 0.5);
+        }
+        to {
+            box-shadow: 0 0 20px rgba(0, 162, 255, 0.8);
+        }
+    }
+
+    .hover-grow {
+        transition: transform 0.3s ease;
+    }
+    
+    .hover-grow:hover {
+        transform: scale(1.05);
+    }
+
+    .section-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(0, 120, 212, 0.5), transparent);
+        margin: 40px 0;
+        border: none;
+    }
+
+    /* Skeleton Loader Styles */
+    .skeleton-loader {
+        display: flex;
+        gap: 25px;
+        padding: 25px 10px;
+        margin: -25px -10px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    
+    .skeleton-loader::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .skeleton-card {
+        min-width: 260px;
+        width: 260px;
+        height: 380px;
+        border-radius: 16px;
+        background: #1a1a1a;
+        position: relative;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+    
+    .skeleton-image {
+        width: 100%;
+        height: 260px;
+        background: #252525;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .skeleton-content {
+        padding: 15px;
+    }
+    
+    .skeleton-line {
+        height: 12px;
+        background: #252525;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .skeleton-line.short {
+        width: 70%;
+    }
+    
+    .skeleton-line.medium {
+        width: 85%;
+    }
+    
+    .skeleton-line.long {
+        width: 100%;
+    }
+    
+    .skeleton-button {
+        height: 40px;
+        width: 100%;
+        background: #252525;
+        border-radius: 10px;
+        margin-top: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Animation for skeleton loader */
+    .skeleton-image::before,
+    .skeleton-line::before,
+    .skeleton-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+        animation: shimmer 1.5s infinite;
+    }
+    
+    @keyframes shimmer {
+        100% {
+            left: 100%;
+        }
+    }
+
+    /* Faculty Skeleton Loader */
+    .faculty-skeleton-loader {
+        display: flex;
+        gap: 25px;
+        padding: 25px 10px;
+        margin: -25px -10px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    
+    .faculty-skeleton-loader::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .faculty-skeleton-card {
+        min-width: 160px;
+        width: 160px;
+        height: 220px;
+        border-radius: 16px;
+        background: #1a1a1a;
+        position: relative;
+        overflow: hidden;
+        flex-shrink: 0;
+        padding: 15px;
+        text-align: center;
+    }
+    
+    .faculty-skeleton-image {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: #252525;
+        margin: 0 auto 10px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .faculty-skeleton-name {
+        height: 16px;
+        width: 100%;
+        background: #252525;
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .faculty-skeleton-image::before,
+    .faculty-skeleton-name::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+        animation: shimmer 1.5s infinite;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    *:focus {
+        outline: 2px solid rgba(0, 162, 255, 0.5);
+        outline-offset: 2px;
+    }
+
+    @media (max-width: 768px) {  
+        .modal-grid {  
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));  
+        }  
+        .modal-header h2 { font-size: 26px; }  
+        .card { min-width: 220px; }  
+        .section-title {  
+            font-size: 24px;  
+        }
+        .container {
+            margin-top: 80px;
+            padding: 0 20px;
+        }
+        .modal-content {
+            padding: 30px 20px;
+        }
+        .section-title .material-icons {
+            font-size: 24px;
+        }
+        .faculty-card {
+            min-width: 140px;
+            width: 140px;
+        }
+        .faculty-image {
+            width: 100px;
+            height: 100px;
+        }
+        .skeleton-card {
+            min-width: 220px;
+            height: 360px;
+        }
+        .skeleton-image {
+            height: 220px;
+        }
+        .faculty-skeleton-card {
+            min-width: 140px;
+            height: 200px;
+        }
+        .faculty-skeleton-image {
+            width: 100px;
+            height: 100px;
+        }
+    }
+</style>  
+</head>  
+<body>  
+<!-- Floating Particles Background -->
+<div class="particles" id="particles"></div>
+
+<header>  
+    <img src="https://i.ibb.co/QjHcT2fg/Picsart-25-08-12-21-24-55-504.png" alt="Logo">  
+</header>  
+
+<!-- Scroll to Top Button -->
+<div class="scroll-to-top" id="scrollToTop">
+    <span class="material-icons">arrow_upward</span>
+</div>
+
+<div class="container">  
+    <!-- Computer Science Section -->  
+    <h2 class="section-title fade-in-section">  
+        <div class="title-content">
+            <span class="material-icons">computer</span> Computer Science  
+        </div>
+        <button class="small-view-all" id="viewAllCsBtn">  
+            <span class="material-icons">apps</span> View All  
+        </button>  
+    </h2>  
+    <div class="skeleton-loader fade-in-section" id="cs-skeleton">
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+    </div>
+    <div class="cards-container fade-in-section" id="cs-cards" style="display: none;"></div>  
+
+    <hr class="section-divider fade-in-section">
+
+    <!-- Physics Section -->  
+    <h2 class="section-title fade-in-section">  
+        <div class="title-content">
+            <span class="material-icons">science</span> Physics  
+        </div>
+        <button class="small-view-all" id="viewAllPhysicsBtn">  
+            <span class="material-icons">apps</span> View All  
+        </button>  
+    </h2>  
+    <div class="skeleton-loader fade-in-section" id="physics-skeleton">
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+    </div>
+    <div class="cards-container fade-in-section" id="physics-cards" style="display: none;"></div>  
+
+    <hr class="section-divider fade-in-section">
+
+    <!-- Math Section -->  
+    <h2 class="section-title fade-in-section">  
+        <div class="title-content">
+            <span class="material-icons">calculate</span> Mathematics  
+        </div>
+         <button class="small-view-all" id="viewAllMathBtn">  
+            <span class="material-icons">apps</span> View All  
+        </button>  
+    </h2>  
+    <div class="skeleton-loader fade-in-section" id="math-skeleton">
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+    </div>
+    <div class="cards-container fade-in-section" id="math-cards" style="display: none;"></div>  
+
+    <hr class="section-divider fade-in-section">
+
+    <!-- Craft Section -->  
+    <h2 class="section-title fade-in-section">  
+        <div class="title-content">
+            <span class="material-icons">brush</span> Craft  
+        </div>
+        <button class="small-view-all" id="viewAllCraftBtn">  
+            <span class="material-icons">apps</span> View All  
+        </button>  
+    </h2>  
+    <div class="skeleton-loader fade-in-section" id="craft-skeleton">
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+        <div class="skeleton-card">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-button"></div>
+            </div>
+        </div>
+    </div>
+    <div class="cards-container fade-in-section" id="craft-cards" style="display: none;"></div>  
+
+    <hr class="section-divider fade-in-section">
+
+    <!-- Faculty Section -->  
+    <h2 class="section-title fade-in-section">  
+        <div class="title-content">
+            <span class="material-icons">people</span> Our Faculty  
+        </div>
+    </h2>  
+    <div class="faculty-skeleton-loader fade-in-section" id="faculty-skeleton">
+        <div class="faculty-skeleton-card">
+            <div class="faculty-skeleton-image"></div>
+            <div class="faculty-skeleton-name"></div>
+        </div>
+        <div class="faculty-skeleton-card">
+            <div class="faculty-skeleton-image"></div>
+            <div class="faculty-skeleton-name"></div>
+        </div>
+        <div class="faculty-skeleton-card">
+            <div class="faculty-skeleton-image"></div>
+            <div class="faculty-skeleton-name"></div>
+        </div>
+        <div class="faculty-skeleton-card">
+            <div class="faculty-skeleton-image"></div>
+            <div class="faculty-skeleton-name"></div>
+        </div>
+        <div class="faculty-skeleton-card">
+            <div class="faculty-skeleton-image"></div>
+            <div class="faculty-skeleton-name"></div>
+        </div>
+    </div>
+    <div class="cards-container fade-in-section" id="faculty-cards" style="display: none;"></div>
+</div>
+
+<!-- Faculty Modal -->
+<div class="faculty-modal" id="facultyModal">
+    <div class="faculty-modal-content">
+        <button class="faculty-modal-close" id="closeFacultyModal">
+            <span class="material-icons">close</span>
+        </button>
+        <div class="faculty-modal-body">
+            <img class="faculty-modal-image" id="modalFacultyImage" src="" alt="Faculty Image">
+            <div class="faculty-details">
+                <h2 id="modalFacultyName"></h2>
+                <p><span class="material-icons">class</span> <span id="modalFacultySubjects"></span></p>
+                <p><span class="material-icons">schedule</span> <span id="modalFacultyClassTime"></span></p>
+                <p><span class="material-icons">phone</span> <span id="modalFacultyMobile"></span></p>
+                <p><span class="material-icons">email</span> <span id="modalFacultyEmail"></span></p>
+                <p><span class="material-icons">school</span> <span id="modalFacultyQualification"></span></p>
+                <p><span class="material-icons">work</span> <span id="modalFacultyExperience"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for All Notes -->  
+<div class="modal" id="allNotesModal">  
+    <div class="modal-content">  
+        <button class="modal-close" id="closeModal"><span class="material-icons">close</span></button>  
+        <div class="modal-header">  
+            <h2><span class="material-icons" id="modalIcon">collections_bookmark</span> <span id="modalTitle">All Notes</span></h2>  
+            <p id="modalSubtitle">Browse our premium collection of educational materials</p>  
+        </div>  
+        <div class="search-container">  
+            <span class="material-icons search-icon">search</span>  
+            <input type="text" class="search-input" id="searchInput" placeholder="Search materials...">  
+        </div>  
+        <div class="modal-grid" id="allNotesGrid"></div>  
+    </div>  
+</div>  
+
+<script>  
+    let allItems = {};  
+    
+    // Create floating particles
+    function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random size between 1px and 3px
+            const size = Math.random() * 2 + 1;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // Random position
+            const startX = Math.random() * 100;
+            const startY = Math.random() * 100;
+            particle.style.left = `${startX}%`;
+            particle.style.top = `${startY}%`;
+            
+            // Random movement direction and distance
+            const tx = (Math.random() - 0.5) * 200;
+            const ty = (Math.random() - 0.5) * 200;
+            particle.style.setProperty('--tx', `${tx}px`);
+            particle.style.setProperty('--ty', `${ty}px`);
+            
+            // Random delay
+            particle.style.animationDelay = `${Math.random() * 15}s`;
+            
+            // Random opacity
+            particle.style.opacity = Math.random() * 0.5;
+            
+            // Add to container
+            particlesContainer.appendChild(particle);
+        }
+    }
+    
+    // Initialize particles
+    createParticles();
+    
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollToTopBtn.classList.add('visible');
+        } else {
+            scrollToTopBtn.classList.remove('visible');
+        }
+    });
+    
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Header scroll effect
+    window.addEventListener("scroll", function() {  
+        const header = document.querySelector("header");  
+        if (window.scrollY > 50) header.classList.add("scrolled");  
+        else header.classList.remove("scrolled");  
+    });  
+    
+    // Continuous Scroll Animation Observer
+    function setupScrollAnimations() {
+        const fadeSections = document.querySelectorAll('.fade-in-section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                } else {
+                    // Remove this line if you don't want elements to fade out when scrolled past
+                    entry.target.classList.remove('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeSections.forEach(section => {
+            observer.observe(section);
+        });
+    }
+
+    // Create card with tooltip
+    function createCard(item) {  
+        return `  
+            <div class="card tooltip" data-tooltip="${item.title}">  
+                <img src="${item.poster_image}" alt="${item.title}" class="card-image"  
+                    onerror="this.src='https://via.placeholder.com/260x150/1a1a1a/ffffff?text=No+Image'">  
+                <div class="card-content">  
+                    <h3 class="card-title" title="${item.title}">${item.title}</h3>  
+                    <p class="card-details"><span class="material-icons">event</span> ${item.date}</p>  
+                    <p class="card-faculty"><span class="material-icons">school</span> ${item.Faculty}</p>  
+                    <a href="${item.file_url}" target="_blank" class="card-link">  
+                        <span class="material-icons">download</span> Download  
+                    </a>  
+                </div>  
+                <span class="tooltiptext">${item.title}</span>
+            </div>  
+        `;  
+    }  
+    
+    // Create modal card with tooltip
+    function createModalCard(item) {  
+        return `  
+            <div class="modal-card tooltip" data-title="${item.title.toLowerCase()}" data-faculty="${item.Faculty.toLowerCase()}" data-tooltip="${item.title}">  
+                <img src="${item.poster_image}" alt="${item.title}" class="modal-card-image"  
+                    onerror="this.src='https://via.placeholder.com/240x140/252525/ffffff?text=No+Image'">  
+                <div class="modal-card-content">  
+                    <h3 class="modal-card-title" title="${item.title}">${item.title}</h3>  
+                    <p class="modal-card-details"><span class="material-icons">event</span> ${item.date}</p>  
+                    <p class="modal-card-details"><span class="material-icons">school</span> ${item.Faculty}</p>  
+                    <a href="${item.file_url}" target="_blank" class="modal-card-link">  
+                        <span class="material-icons">open_in_new</span> Open  
+                    </a>  
+                </div>  
+                <span class="tooltiptext">${item.title}</span>
+            </div>  
+        `;  
+    }  
+    
+    // Filter items with debounce
+    let filterTimeout;
+    function filterItems(searchTerm) {  
+        clearTimeout(filterTimeout);
+        filterTimeout = setTimeout(() => {
+            const modalCards = document.querySelectorAll('.modal-card');  
+            searchTerm = searchTerm.toLowerCase();  
+              
+            modalCards.forEach(card => {  
+                const title = card.dataset.title;  
+                const faculty = card.dataset.faculty;  
+                  
+                if (title.includes(searchTerm) || faculty.includes(searchTerm)) {  
+                    card.style.display = 'block';  
+                    card.classList.add('animate__animated', 'animate__fadeIn');
+                } else {  
+                    card.style.display = 'none';  
+                }  
+            });  
+        }, 300);
+    }  
+    
+    // Show modal with animation
+    function showModalForSubject(subject, icon, title) {  
+        const modal = document.getElementById('allNotesModal');  
+        const modalTitle = document.getElementById('modalTitle');  
+        const modalSubtitle = document.getElementById('modalSubtitle');  
+        const modalIcon = document.getElementById('modalIcon');  
+        const allNotesGrid = document.getElementById('allNotesGrid');  
+        
+        modalTitle.textContent = `All ${title} Notes`;  
+        modalSubtitle.textContent = `Browse our premium collection of ${title.toLowerCase()} materials`;  
+        modalIcon.textContent = icon;  
+        
+        allNotesGrid.innerHTML = allItems[subject].map(createModalCard).join('');  
+        modal.style.display = 'flex';  
+        setTimeout(() => {  
+            modal.classList.add('show');  
+        }, 10);  
+        document.body.style.overflow = 'hidden';  
+    }  
+    
+    // Initialize on DOM load
+    document.addEventListener('DOMContentLoaded', function() {  
+        setupScrollAnimations(); // Initialize scroll animations
+        
+        const modal = document.getElementById('allNotesModal');  
+        const closeModalBtn = document.getElementById('closeModal');  
+        const searchInput = document.getElementById('searchInput');  
+        
+        // View All buttons
+        const viewAllCsBtn = document.getElementById('viewAllCsBtn');  
+        const viewAllPhysicsBtn = document.getElementById('viewAllPhysicsBtn');  
+        const viewAllMathBtn = document.getElementById('viewAllMathBtn');  
+        const viewAllCraftBtn = document.getElementById('viewAllCraftBtn');  
+        
+        // Card containers
+        const csCardsContainer = document.getElementById('cs-cards');  
+        const physicsCardsContainer = document.getElementById('physics-cards');  
+        const mathCardsContainer = document.getElementById('math-cards');  
+        const craftCardsContainer = document.getElementById('craft-cards');  
+        const facultyContainer = document.getElementById('faculty-cards');
+        const facultyModal = document.getElementById('facultyModal');
+        const closeFacultyModal = document.getElementById('closeFacultyModal');
+        
+        // Skeleton loaders
+        const csSkeleton = document.getElementById('cs-skeleton');
+        const physicsSkeleton = document.getElementById('physics-skeleton');
+        const mathSkeleton = document.getElementById('math-skeleton');
+        const craftSkeleton = document.getElementById('craft-skeleton');
+        const facultySkeleton = document.getElementById('faculty-skeleton');
+        
+        // Fetch Computer Science data
+        fetch('https://raw.githubusercontent.com/cricstreamz745/G.P-BhgalPur-Electrical-/main/computer.json')  
+            .then(res => res.json())  
+            .then(data => {  
+                allItems['cs'] = data.filter(item => item.subject === "Computer Science");  
+                
+                if (allItems['cs'].length === 0) {  
+                    csSkeleton.style.display = 'none';
+                    csCardsContainer.innerHTML = `  
+                        <div class="loading">  
+                            <span class="material-icons">error</span>  
+                            <span>No premium Computer Science resources found.</span>  
+                        </div>`;  
+                    csCardsContainer.style.display = 'flex';
+                } else {  
+                    csCardsContainer.innerHTML = '';  
+                    allItems['cs'].slice(0, 10).forEach((item, index) => {  
+                        csCardsContainer.innerHTML += createCard(item, index);  
+                    });  
+                    csSkeleton.style.display = 'none';
+                    csCardsContainer.style.display = 'flex';
+                }  
+            })  
+            .catch(error => {  
+                csSkeleton.style.display = 'none';
+                csCardsContainer.innerHTML = `  
+                    <div class="loading">  
+                        <span class="material-icons">warning</span>  
+                        <span>Error loading Computer Science resources.</span>  
+                    </div>`;  
+                csCardsContainer.style.display = 'flex';
+                console.error('Error fetching CS data:', error);  
+            });  
+        
+        // Fetch Physics data
+        fetch('https://raw.githubusercontent.com/cricstreamz745/G.P-BhgalPur-Electrical-/main/physics.json')  
+            .then(res => res.json())  
+            .then(data => {  
+                allItems['physics'] = data.filter(item => item.subject === "Physics");  
+                
+                if (allItems['physics'].length === 0) {  
+                    physicsSkeleton.style.display = 'none';
+                    physicsCardsContainer.innerHTML = `  
+                        <div class="loading">  
+                            <span class="material-icons">error</span>  
+                            <span>No premium Physics resources found.</span>  
+                        </div>`;  
+                    physicsCardsContainer.style.display = 'flex';
+                } else {  
+                    physicsCardsContainer.innerHTML = '';  
+                    allItems['physics'].slice(0, 10).forEach((item, index) => {  
+                        physicsCardsContainer.innerHTML += createCard(item, index);  
+                    });  
+                    physicsSkeleton.style.display = 'none';
+                    physicsCardsContainer.style.display = 'flex';
+                }  
+            })  
+            .catch(error => {  
+                physicsSkeleton.style.display = 'none';
+                physicsCardsContainer.innerHTML = `  
+                    <div class="loading">  
+                        <span class="material-icons">warning</span>  
+                        <span>Error loading Physics resources.</span>  
+                    </div>`;  
+                physicsCardsContainer.style.display = 'flex';
+                console.error('Error fetching Physics data:', error);  
+            });  
+        
+        // Fetch Math data
+        fetch('https://raw.githubusercontent.com/cricstreamz745/G.P-BhgalPur-Electrical-/main/Math.json')  
+            .then(res => res.json())  
+            .then(data => {  
+                allItems['math'] = data.filter(item => item.subject === "Mathematics");  
+                
+                if (allItems['math'].length === 0) {  
+                    mathSkeleton.style.display = 'none';
+                    mathCardsContainer.innerHTML = `  
+                        <div class="loading">  
+                            <span class="material-icons">error</span>  
+                            <span>No premium Mathematics resources found.</span>  
+                        </div>`;  
+                    mathCardsContainer.style.display = 'flex';
+                } else {  
+                    mathCardsContainer.innerHTML = '';  
+                    allItems['math'].slice(0, 10).forEach((item, index) => {  
+                        mathCardsContainer.innerHTML += createCard(item, index);  
+                    });  
+                    mathSkeleton.style.display = 'none';
+                    mathCardsContainer.style.display = 'flex';
+                }  
+            })  
+            .catch(error => {  
+                mathSkeleton.style.display = 'none';
+                mathCardsContainer.innerHTML = `  
+                    <div class="loading">  
+                        <span class="material-icons">warning</span>  
+                        <span>Error loading Mathematics resources.</span>  
+                    </div>`;  
+                mathCardsContainer.style.display = 'flex';
+                console.error('Error fetching Math data:', error);  
+            });  
+        
+        // Fetch Craft data
+        fetch('https://raw.githubusercontent.com/cricstreamz745/G.P-BhgalPur-Electrical-/main/craft.json')  
+            .then(res => res.json())  
+            .then(data => {  
+                allItems['craft'] = data.filter(item => item.subject === "Craft");  
+                
+                if (allItems['craft'].length === 0) {  
+                    craftSkeleton.style.display = 'none';
+                    craftCardsContainer.innerHTML = `  
+                        <div class="loading">  
+                            <span class="material-icons">error</span>  
+                            <span>No premium Craft resources found.</span>  
+                        </div>`;  
+                    craftCardsContainer.style.display = 'flex';
+                } else {  
+                    craftCardsContainer.innerHTML = '';  
+                    allItems['craft'].slice(0, 10).forEach((item, index) => {  
+                        craftCardsContainer.innerHTML += createCard(item, index);  
+                    });  
+                    craftSkeleton.style.display = 'none';
+                    craftCardsContainer.style.display = 'flex';
+                }  
+            })  
+            .catch(error => {  
+                craftSkeleton.style.display = 'none';
+                craftCardsContainer.innerHTML = `  
+                    <div class="loading">  
+                        <span class="material-icons">warning</span>  
+                        <span>Error loading Craft resources.</span>  
+                    </div>`;  
+                craftCardsContainer.style.display = 'flex';
+                console.error('Error fetching Craft data:', error);  
+            });  
+        
+        // Fetch Faculty data
+        fetch('https://raw.githubusercontent.com/cricstreamz745/G.P-BhgalPur-Electrical-/main/Faculty.json')
+            .then(res => res.json())
+            .then(data => {
+                facultyContainer.innerHTML = '';
+                data.forEach((faculty, index) => {
+                    const facultyCard = document.createElement('div');
+                    facultyCard.className = 'faculty-card tooltip fade-in-section';
+                    facultyCard.style.transitionDelay = `${index * 0.1 + 0.3}s`;
+                    facultyCard.innerHTML = `
+                        <img src="${faculty.image}" alt="${faculty.name}" class="faculty-image" 
+                             onerror="this.src='https://i.ibb.co/5GZQz9J/faculty1.jpg'">
+                        <h3 class="faculty-name">${faculty.name}</h3>
+                        <span class="tooltiptext">${faculty.name} - ${faculty.subjects.join(', ')}</span>
+                    `;
+                    facultyCard.addEventListener('click', () => openFacultyModal(faculty));
+                    facultyContainer.appendChild(facultyCard);
+                });
+                
+                facultySkeleton.style.display = 'none';
+                facultyContainer.style.display = 'flex';
+                
+                // Re-run observer for newly added faculty cards
+                setupScrollAnimations();
+            })
+            .catch(error => {
+                facultySkeleton.style.display = 'none';
+                facultyContainer.innerHTML = `
+                    <div class="loading">  
+                        <span class="material-icons">error</span>  
+                        <span>Error loading faculty information.</span>  
+                    </div>`;
+                facultyContainer.style.display = 'flex';
+                console.error('Error fetching faculty data:', error);
+            });
+
+        // Faculty modal functions
+        function openFacultyModal(faculty) {
+            document.getElementById('modalFacultyImage').src = faculty.image;
+            document.getElementById('modalFacultyName').textContent = faculty.name;
+            document.getElementById('modalFacultySubjects').textContent = faculty.subjects.join(', ');
+            document.getElementById('modalFacultyClassTime').textContent = faculty.classTime;
+            document.getElementById('modalFacultyMobile').textContent = faculty.mobile;
+            document.getElementById('modalFacultyEmail').textContent = faculty.email;
+            document.getElementById('modalFacultyQualification').textContent = faculty.qualification;
+            document.getElementById('modalFacultyExperience').textContent = faculty.experience;
+            
+            facultyModal.style.display = 'flex';
+            setTimeout(() => {
+                facultyModal.classList.add('show');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        closeFacultyModal.addEventListener('click', () => {
+            facultyModal.classList.remove('show');
+            setTimeout(() => {
+                facultyModal.style.display = 'none';
+            }, 300);
+            document.body.style.overflow = 'auto';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === facultyModal) {
+                facultyModal.classList.remove('show');
+                setTimeout(() => {
+                    facultyModal.style.display = 'none';
+                }, 300);
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Event listeners for View All buttons
+        viewAllCsBtn.addEventListener('click', () => showModalForSubject('cs', 'computer', 'Computer Science'));  
+        viewAllPhysicsBtn.addEventListener('click', () => showModalForSubject('physics', 'science', 'Physics'));  
+        viewAllMathBtn.addEventListener('click', () => showModalForSubject('math', 'calculate', 'Mathematics'));  
+        viewAllCraftBtn.addEventListener('click', () => showModalForSubject('craft', 'brush', 'Craft'));  
+        
+        // Modal close functionality
+        closeModalBtn.addEventListener('click', () => {  
+            modal.classList.remove('show');  
+            setTimeout(() => {  
+                modal.style.display = 'none';  
+            }, 300);  
+            document.body.style.overflow = 'auto';  
+        });  
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {  
+            if (e.target === modal) {  
+                modal.classList.remove('show');  
+                setTimeout(() => {  
+                    modal.style.display = 'none';  
+                }, 300);  
+                document.body.style.overflow = 'auto';  
+            }  
+        });  
+        
+        // Search functionality with debounce
+        searchInput.addEventListener('input', (e) => {  
+            filterItems(e.target.value);  
+        });  
+        
+        // Add hover effects to all cards after load
+        setTimeout(() => {
+            document.querySelectorAll('.card, .modal-card, .faculty-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.classList.add('animate__animated', 'animate__pulse');
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('animate__animated', 'animate__pulse');
+                });
+            });
+        }, 1000);
+        
+        // Add click animation to buttons
+        document.querySelectorAll('button, a').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'translateY(1px)';
+            });
+            
+            button.addEventListener('mouseup', () => {
+                button.style.transform = '';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = '';
+            });
+        });
+    });  
+</script>  
+</body>  
+</html>

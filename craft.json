@@ -1,12 +1,12 @@
 [
   {
     "id": "craft101-1",
-    "title": "Introduction to Pottery",
-    "date": "2023-09-05",
-    "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
-    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
+    "title": "Type Of Line And Their Application",
+    "date": "2025-08-04",
+    "file_url": "https://drive.google.com/file/d/1ndIdICWiGAhBYrzrzT5EkmXGzPC_Qevi/view?usp=drivesdk",
+    "poster_image": "https://i.ibb.co/bjqYQYYb/file-000000002ca461f7a30f78a231924f18.png",
     "subject": "Craft",
-    "Faculty": "Ms. Williams"
+    "Faculty": "Mr. Nitish Rajan"
   },
   {
     "id": "craft102-2",
@@ -80,7 +80,7 @@
     "subject": "Craft",
     "Faculty": "Ms. Anderson"
   },
-    {
+  {
     "id": "craft109-9",
     "title": "Metal Craft Basics",
     "date": "2023-10-31",
@@ -88,7 +88,7 @@
     "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
     "subject": "Craft",
     "Faculty": "Ms. Anderson"
-    },
+  },
   {
     "id": "craft110-10",
     "title": "Traditional Handicrafts",

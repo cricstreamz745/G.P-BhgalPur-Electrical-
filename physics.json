@@ -1,12 +1,12 @@
 [
   {
     "id": "phy101-1",
-    "title": "Introduction to Classical Mechanics",
-    "date": "2023-09-05",
-    "file_url": "https://drive.google.com/drive/folders/1_YWBB6JYJHFQTHLhX0KvdU-Ciu6hS7Hy",
-    "poster_image": "https://i.ibb.co/5gcbsGmB/IMG-20250812-WA0053.jpg",
+    "title": "Unit And Dimensions",
+    "date": "2025-08-08",
+    "file_url": "https://drive.google.com/file/d/1mri-bYb0gZ6BIs0kYZWDYhc6Wl9jKugd/view?usp=drivesdk",
+    "poster_image": "https://i.ibb.co/WLbFn0b/file-00000000500c61f7b9a5db9d2a1c5f48.png",
     "subject": "Physics",
-    "Faculty": "Prof. Einstein"
+    "Faculty": "S. K. Chaudhary"
   },
   {
     "id": "phy102-2",
@@ -35,7 +35,7 @@
     "subject": "Physics",
     "Faculty": "Dr. Heisenberg"
   },
-   {
+  {
     "id": "phy104-4",
     "title": "Quantum Physics Introduction",
     "date": "2023-09-26",

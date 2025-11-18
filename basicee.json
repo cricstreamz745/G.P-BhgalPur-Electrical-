@@ -25,5 +25,14 @@
     "poster_image": "https://i.ibb.co/23NVmdTZ/file-00000000736471fa8b7402c65f130299.png",
     "subject": "Basic EE",
     "Faculty": "Mr. Sisir Suman"
+  },
+  {
+    "id": "Ch-4",
+    "title": "AC & DC Circuits ",
+    "date": "18-11-2025",
+    "file_url": "https://drive.google.com/file/d/1jTT7kJlKY638dJktVMTs06AGr_eawQNO/view?usp=drivesdk",
+    "poster_image": "https://i.ibb.co/C3fyt3jB/1763487781067.png",
+    "subject": "Basic EE",
+    "Faculty": "Mr. Sisir Suman"
   }
 ]
